@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ project.title }} | ProChipRnD{% endblock %}
+
+{% block content %}
+    <section class="project-detail">
+        <a href="{% url 'portfolio' %}" class="back-link" style="text-decoration: none;">&larr; Назад к работам</a>
+
+        <div class="project-header">
+            <h1>{{ project.title }}</h1>
+            <p class="project-subtitle">{{ project.subtitle }}</p>
+        </div>
+
+        <div class="project-media">
+            {% if project.image|slice:"-4:" == '.mp4' or project.image|slice:"-4:" == '.MP4' %}
+                <!-- Видео — принудительно уменьшено в HTML -->
+                <video controls style="width: 70%; max-width: 500px; height: auto; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); margin: 0 auto; display: block; object-fit: cover; transition: transform 0.2s ease;">
+                    <source src="{% static project.image %}" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+            {% else %}
+                <!-- Фото — принудительно уменьшено в HTML -->
+                <img src="{% static project.image %}" alt="{{ project.title }}" style="width: 70%; max-width: 500px; height: auto; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); margin: 0 auto; display: block; object-fit: cover; transition: transform 0.2s ease;">
+            {% endif %}
+        </div>
+
+        <div class="project-description">
+            <h2>Описание работы</h2>
+            {{ project.description|linebreaks }}
+        </div>
+    </section>
+{% endblock %}
