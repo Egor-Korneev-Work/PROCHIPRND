@@ -1,0 +1,35 @@
+# Виртуальные окружения
+.venv/
+venv/
+ENV/
+
+# База данных
+db.sqlite3
+
+# Логи
+logs/
+*.log
+
+# Кэш
+__pycache__/
+*.pyc
+
+# Среда разработки
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Статика (собранная)
+staticfiles/
